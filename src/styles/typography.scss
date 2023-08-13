@@ -1,0 +1,33 @@
+.title {
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    &2 {
+        font-size: 1rem;
+    }
+
+    &.headline {
+        font-size: 0.75rem;
+        font-weight: 400;
+
+        &.bold {
+            font-weight: 700
+        }
+
+        &.paragraph {
+            font-size: 1rem;
+        }
+    }
+
+    &.white {
+        color: var(--Grey-0);
+    }
+
+    &.grey {
+        color: var(--Grey-1);
+    }
+    &.rose {
+        color: var(--Color-primary);
+    }
+}
