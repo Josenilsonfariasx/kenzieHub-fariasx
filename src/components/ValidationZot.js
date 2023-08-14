@@ -18,7 +18,7 @@ export const Validation = z.object({
     confirmPassword: z.string().nonempty("É obrigatorio"),
     bio: z.string().nonempty("É obrigatorio"),
     contact: z.string().nonempty("É obrigatorio"),
-    module: z.string().nonempty("É obrigatorio"),
+    course_module: z.string().nonempty("É obrigatorio"),
 }).refine(({password, confirmPassword}) => password === confirmPassword,{
     message: "As senhas devem ser identicas",
     path: ["confirmPassword"],
