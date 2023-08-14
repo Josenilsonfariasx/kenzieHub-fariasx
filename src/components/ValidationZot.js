@@ -1,3 +1,4 @@
+import path from "path";
 import { z } from "zod";
 
 export const Validation = z.object({
@@ -18,4 +19,7 @@ export const Validation = z.object({
     bio: z.string().nonempty("É obrigatorio"),
     contact: z.string().nonempty("É obrigatorio"),
     module: z.string().nonempty("É obrigatorio"),
+}).refine(({password, confirmPassword}) => password === confirmPassword,{
+    message: "As senhas devem ser identicas",
+    path: ["confirmPassword"],
 });
