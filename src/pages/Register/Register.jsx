@@ -7,19 +7,24 @@ import { Api } from "../../services/api";
 import style from "./style.module.scss"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Register = ()=>{
+    const [loading, setLoading] = useState()
     const navi = useNavigate()
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver:zodResolver(Validation)
     })
     const registerUser = async (form) =>{
         try {
+            setLoading(true)
             const {data} = await Api.post('/users', form)
             toast.success("Voce foi redirecionado para o login 🚀")
             navi("/")
         } catch (error) {
             toast.warning(`Algo de errado aconteceu, tente novamente😡`)
+        } finally {
+            setLoading(false)
         }
     }
     const submit = (dataForm) =>{
@@ -62,7 +67,7 @@ export const Register = ()=>{
                                 <option value="Sexto modulo (M6)">Sexto modulo</option>
                             </select>
                             {errors.course_module ? <span className="title headline rose">{errors.course_module.message}</span> : null}
-                            <button className="button">Cadastrar</button>
+                            <button className="button">{loading ? "Cadastrando" :"Cadastre-se"}</button>
                         </div>
                     </form>
                 </div>
