@@ -1,18 +1,27 @@
 body {
+    background-color: var(--Grey-4);
+}
+.div {
     display: flex;
     background-color: var(--Grey-4);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    max-width: 50.375rem;
+    margin: 0 auto;
 
-    >div {
+
+    gap: 80px;
+
         > header {
+            margin-top: 3rem;
+            width: 18.5rem;
             height: 4.3rem;
             button {
                 height: 1.9rem;
             }
         }
     }
-}
 .main {
     display: flex;
     flex-direction: column;
