@@ -22,7 +22,7 @@ export const SingIn = ({user, setUser}) => {
             setUser(data.user)
             localStorage.setItem("@KU-User", data.token)
             toast.success("Logado com sucesso")
-            navi("/register")
+            navi("/home")
         } catch (error) {
             {"Incorrect email / password combination".includes(error.response.data.message) ? (
                 toast.warning("Email ou Senha incorretos")
@@ -38,7 +38,7 @@ export const SingIn = ({user, setUser}) => {
     }
     
     return (
-        <>
+        <div className={style.div}>
             <Header visible={false} />
             <main className={style.main}>
                 <h1 className="title white">Login</h1>
@@ -54,6 +54,6 @@ export const SingIn = ({user, setUser}) => {
                     <button className="button variant" onClick={()=> navi("/register")}>Cadastre-se</button>
                 </div>
             </main>
-        </>
+        </div>
     );
 };

@@ -42,7 +42,7 @@ export const Register = ()=>{
     }
 
     return (
-        <>
+        <div className={style.div}>
         <Header visible={true}/>
         <main className={style.main}>
                 <h1 className="title white">Crie uma conta</h1>
@@ -72,6 +72,6 @@ export const Register = ()=>{
                     </form>
                 </div>
             </main>
-        </>
+        </div>
     )
 }
