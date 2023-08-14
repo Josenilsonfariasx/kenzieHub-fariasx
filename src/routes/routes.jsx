@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom"
-import { SingIn } from "../pages/SingIn/SingIn"
-import { Register } from "../pages/Register/Register"
-import { useState } from "react"
-import { Dashboard } from "../pages/Dashborad/Dashborad"
+import { Route, Routes } from "react-router-dom";
+import { SingIn } from "../pages/SingIn/SingIn";
+import { Register } from "../pages/Register/Register";
+import { useState } from "react";
+import { Dashboard } from "../pages/Dashborad/Dashborad";
 
 export const RoutesMain = () =>{
     const [user, setUser] = useState()

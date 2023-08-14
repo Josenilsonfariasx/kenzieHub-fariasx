@@ -1,8 +1,8 @@
-import { SingIn } from './pages/SingIn/SingIn';
-import { RoutesMain } from './routes/routes';
+import { SingIn } from "./pages/SingIn/SingIn";
+import { RoutesMain } from "./routes/routes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import './styles/index.scss'
+import "./styles/index.scss";
 
 const App = () => {
     return (

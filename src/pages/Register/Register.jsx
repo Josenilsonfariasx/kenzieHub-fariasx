@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Header } from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input";
-import {zodResolver} from "@hookform/resolvers/zod"
+import {zodResolver} from "@hookform/resolvers/zod";
 import { Validation } from "../../components/ValidationZot";
 import { Api } from "../../services/api";
 import style from "./style.module.scss"
@@ -18,7 +18,7 @@ export const Register = ()=>{
     const registerUser = async (form) =>{
         try {
             setLoading(true)
-            const {data} = await Api.post('/users', form)
+            const {data} = await Api.post("/users", form)
             toast.success("Voce foi redirecionado para o login 🚀")
             navi("/")
         } catch (error) {
