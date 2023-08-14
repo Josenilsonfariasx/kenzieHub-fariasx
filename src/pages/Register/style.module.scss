@@ -3,15 +3,26 @@ body {
     background-color: var(--Grey-4);
     justify-content: center;
     align-items: center;
+
+    >div {
+        > header {
+            height: 4.3rem;
+            button {
+                height: 1.9rem;
+            }
+        }
+    }
 }
-main {
+.main {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.103rem;
+    margin-bottom: 30px;
 
+    max-height: 62.5rem; 
     width: 18.5rem;
-    height: 25rem;
+    height: 100%;
     padding: 2.10569rem 1.103rem;
 
     border-radius: 0.20056rem;
@@ -41,6 +52,23 @@ main {
                 display: flex;
                 flex-direction: column;
                 gap: 1.2rem;
+
+                >select {
+                    padding: 0rem 1.01519rem;
+                    height: 3rem;
+                    border: 1.218px solid var(--Grey-2);
+                    background: var(--Grey-2);
+                    border-radius: 5px;
+                    color: var(--Grey-0);
+                    font-size: 16px;
+                    font-family: var(--font-primary);
+                    > option {
+                        border-radius: 5px;
+                        background-color: var(--Grey-3);
+                        color: var(--Grey-0);
+                    }
+                }
+
                 > button {
                     height: 2.4rem;
                     color: var(--Grey-0);
