@@ -3,40 +3,34 @@ import { Header } from "../../components/Header/Header";
 import { Input } from "../../components/Input/Input";
 import style from "./style.module.scss";
 import { useForm } from "react-hook-form";
-import { Api } from "../../services/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ValidationLogin } from "./ValidationLogin";
-import { toast } from "react-toastify";
 import { useState } from "react";
-export const SingIn = ({user, setUser}) => {
-    const navi = useNavigate()
-    const [loading, setLoading] = useState()
-    const {register, handleSubmit, formState: {errors}} = useForm({
-        resolver:zodResolver(ValidationLogin)
-    })
+import { useUserContext } from "../../providers/UserContext";
+import { toast } from "react-toastify";
+export const SingIn = () => {
+    const [loading, setLoading] = useState();
+    const { login } = useUserContext();
+    const navi = useNavigate();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: zodResolver(ValidationLogin),
+    });
 
-    const login = async(form) =>{
+    const submit = (dataForm) => {
         try {
-            setLoading(true)
-            const {data} = await Api.post("/sessions", form)
-            setUser(data.user)
-            localStorage.setItem("@KU-User", data.token)
-            toast.success("Logado com sucesso")
-            navi("/home")
+            setLoading(true);
+            login(dataForm);
         } catch (error) {
-            {"Incorrect email / password combination".includes(error.response.data.message) ? (
-                toast.warning("Email ou Senha incorretos")
-            ): null}
-            console.log(error.response.data.message)
+            toast.warning(error.message);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }
+    };
 
-    const submit = (dataForm) =>{
-        login(dataForm)
-    }
-    
     return (
         <div className={style.div}>
             <Header visible={false} />
@@ -45,13 +39,34 @@ export const SingIn = ({user, setUser}) => {
                 <div>
                     <form onSubmit={handleSubmit(submit)}>
                         <div>
-                            <Input label="Email" type="text" placeholder="Digite seu email" {...register("email")} error={errors.email}/>
-                            <Input label="senha" type="password" placeholder="Digite seu senha"{...register("password")} error={errors.password}/>
-                            <button className="button">{!loading ? "Entrar" : "Tentando conectar"}</button>
+                            <Input
+                                label="Email"
+                                type="text"
+                                placeholder="Digite seu email"
+                                {...register("email")}
+                                error={errors.email}
+                            />
+                            <Input
+                                label="senha"
+                                type="password"
+                                placeholder="Digite seu senha"
+                                {...register("password")}
+                                error={errors.password}
+                            />
+                            <button className="button">
+                                {!loading ? "Entrar" : "Tentando conectar"}
+                            </button>
                         </div>
                     </form>
-                    <span className="title headline grey">Ainda não possui uma conta?</span>
-                    <button className="button variant" onClick={()=> navi("/register")}>Cadastre-se</button>
+                    <span className="title headline grey">
+                        Ainda não possui uma conta?
+                    </span>
+                    <button
+                        className="button variant"
+                        onClick={() => navi("/register")}
+                    >
+                        Cadastre-se
+                    </button>
                 </div>
             </main>
         </div>
