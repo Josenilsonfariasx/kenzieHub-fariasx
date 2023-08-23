@@ -3,6 +3,7 @@ import { Header } from "../../components/Header/Header";
 import style from "./style.module.scss";
 import { useUserContext } from "../../providers/UserContext";
 import { useNavigate } from "react-router-dom";
+import { TechList } from "../../components/TechList/TechList";
 
 export const Dashboard = () => {
     const navi = useNavigate();
@@ -20,13 +21,7 @@ export const Dashboard = () => {
                     </div>
                 </div>
                 <div className={style.info}>
-                    <h2 className="title white">
-                        Que pena! Estamos em desenvolvimento :(
-                    </h2>
-                    <h2 className="title white">
-                        Nossa aplicação está em desenvolvimento, em breve
-                        teremos novidades
-                    </h2>
+                    <TechList />
                 </div>
             </main>
         </div>
