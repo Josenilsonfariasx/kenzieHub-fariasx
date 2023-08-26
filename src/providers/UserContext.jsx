@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [tech, setTech] = useState(null)
     const navi = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,7 @@ export const UserProvider = ({ children }) => {
                         },
                     });
                     setUser(data);
+                    setTech(data.techs)
                     navi("/home");
                 } catch (error) {
                     console.log(error);
@@ -69,7 +71,7 @@ export const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, registerUser, login, logout }}>
+        <UserContext.Provider value={{ user, tech, setTech, registerUser, login, logout }}>
             {children}
         </UserContext.Provider>
     );
