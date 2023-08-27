@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Api } from "../services/api";
 import { useUserContext } from "./UserContext";
+import { toast } from "react-toastify";
 
 export const TechContext = createContext({});
 
@@ -30,6 +31,7 @@ export const TechProvider = ({ children }) => {
                 };
                 const add = { ...newTech };
                 setTech([...tech, add]);
+                toast.success("Adicionado com sucesso")
             } catch (error) {
                 console.log(error);
             }
