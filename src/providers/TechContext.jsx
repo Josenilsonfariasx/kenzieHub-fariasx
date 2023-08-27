@@ -15,7 +15,6 @@ export const TechProvider = ({ children }) => {
     const createTech = async (form) => {
         if (token) {
             try {
-                console.log("entrou");
                 const { data } = await Api.post("/users/techs", form, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -33,15 +32,36 @@ export const TechProvider = ({ children }) => {
                 setTech([...tech, add]);
                 toast.success("Adicionado com sucesso")
             } catch (error) {
-                console.log(error);
             }
         } else {
             toast.warning("Voce precisa estar logado para criar");
             navi("/");
         }
     };
+
+    const removeTech = async (idTech) =>{
+        if(token) {
+            try {
+                console.log(idTech)
+                const {data} = await Api.delete(`/users/techs/${idTech}`, {
+                    headers:{
+                        Authorization : `Bearer ${token}`
+                    }
+                })
+                const newTech = tech.filter((techs)=>{
+                    return techs.id != idTech
+                })
+                setTech(newTech)
+                toast.success("Apagado com sucesso")
+            } catch (error) {
+                toast.warning("Ocerreu um problema, tente novamente mais tarde")
+            }
+        }else{
+            toast.warning("Voce precisa estar logado")
+        }
+    }
     return (
-        <TechContext.Provider value={{ createTech }}>
+        <TechContext.Provider value={{ createTech, removeTech }}>
             {children}
         </TechContext.Provider>
     );

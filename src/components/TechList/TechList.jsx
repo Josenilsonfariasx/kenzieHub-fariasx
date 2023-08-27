@@ -27,6 +27,7 @@ export const TechList = () => {
                                         key={techs.id}
                                         title={techs.title}
                                         status={techs.status}
+                                        id={techs.id}
                                     />
                                 ))
                             : null}
