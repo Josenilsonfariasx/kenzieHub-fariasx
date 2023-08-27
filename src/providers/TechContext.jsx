@@ -60,8 +60,38 @@ export const TechProvider = ({ children }) => {
             toast.warning("Voce precisa estar logado")
         }
     }
+
+    const editTech = async (idTech, status) =>{
+        console.log(status)
+        if(token){
+            try {
+                console.log('entrando aqui')
+                const {data} = await Api.put(`/users/techs/${idTech}`,status, {
+                    headers:{
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+                const editStateTech = tech.filter((techs) =>{
+                    return (
+                        techs.id = idTech
+                    )
+                })
+                const removeStateTech = tech.filter((techs) =>{
+                    return (
+                        techs.id != idTech
+                    )
+                })
+
+                editStateTech[0].status = status.status
+                const techEdit = editStateTech
+                setTech([...removeStateTech, ...techEdit])
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
     return (
-        <TechContext.Provider value={{ createTech, removeTech }}>
+        <TechContext.Provider value={{ createTech, removeTech, editTech}}>
             {children}
         </TechContext.Provider>
     );
