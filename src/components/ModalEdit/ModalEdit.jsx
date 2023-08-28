@@ -12,6 +12,7 @@ export const ModalEdit = ({ visible, EditModaValue }) => {
     const submit = (status) => {
         const id = EditModaValue[0].id;
         editTech(id, status);
+        visible(false)
     };
     return (
         <div role="dialog" className={style.modalOverlay}>

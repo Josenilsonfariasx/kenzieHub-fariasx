@@ -65,7 +65,6 @@ export const TechProvider = ({ children }) => {
         console.log(status)
         if(token){
             try {
-                console.log('entrando aqui')
                 const {data} = await Api.put(`/users/techs/${idTech}`,status, {
                     headers:{
                         Authorization: `Bearer ${token}`
@@ -73,9 +72,10 @@ export const TechProvider = ({ children }) => {
                 })
                 const editStateTech = tech.filter((techs) =>{
                     return (
-                        techs.id = idTech
-                    )
-                })
+                        techs.id == idTech
+                        )
+                    })
+                console.log(editStateTech)
                 const removeStateTech = tech.filter((techs) =>{
                     return (
                         techs.id != idTech
