@@ -17,6 +17,9 @@
         > div {
             display: flex;
             gap: .59rem;
+            >img {
+                cursor: pointer;
+            }
         }
     }
 }
