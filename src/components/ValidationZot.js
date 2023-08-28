@@ -1,5 +1,5 @@
-import path from "path";
-import { z } from "zod";
+import path from "path"
+import { z } from "zod"
 
 export const Validation = z.object({
     name: z.string().nonempty("Nome é obrigatorio"),
@@ -22,4 +22,4 @@ export const Validation = z.object({
 }).refine(({password, confirmPassword}) => password === confirmPassword,{
     message: "As senhas devem ser identicas",
     path: ["confirmPassword"],
-});
+})

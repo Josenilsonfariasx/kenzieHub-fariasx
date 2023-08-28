@@ -1,13 +1,13 @@
-import { useState } from "react";
-import icon_cross from "../../assets/icon-cross.svg";
-import { TechCard } from "./TechCard/TechCard";
-import { ModalCreate } from "../ModalCreate/ModalCreate";
-import { ModalEdit } from "../ModalEdit/ModalEdit";
-import style from "./style.module.scss";
-import { useUserContext } from "../../providers/UserContext";
-import { useTechContext } from "../../providers/TechContext";
+import { useState } from "react"
+import icon_cross from "../../assets/icon-cross.svg"
+import { TechCard } from "./TechCard/TechCard"
+import { ModalCreate } from "../ModalCreate/ModalCreate"
+import { ModalEdit } from "../ModalEdit/ModalEdit"
+import style from "./style.module.scss"
+import { useUserContext } from "../../providers/UserContext"
+import { useTechContext } from "../../providers/TechContext"
 export const TechList = () => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false)
     const [editVisible, setEdit] = useState(false)
     const [EditModaValue, setValueModalEdit] = useState()
     const {tech} = useUserContext()
@@ -43,5 +43,5 @@ export const TechList = () => {
                 </div>
             </section>
         </>
-    );
-};
+    )
+}

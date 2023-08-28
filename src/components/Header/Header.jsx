@@ -1,7 +1,7 @@
-import logo from "../../assets/Logo.svg";
-import { useUserContext } from "../../providers/UserContext";
-import style from "./style.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/Logo.svg"
+import { useUserContext } from "../../providers/UserContext"
+import style from "./style.module.scss"
+import { Link, useNavigate } from "react-router-dom"
 export const Header = ({ visible}) => {
     const {user, logout} = useUserContext()
     const navi = useNavigate()
@@ -16,5 +16,5 @@ export const Header = ({ visible}) => {
                 ): null}
             </div>
         </header>
-    );
-};
+    )
+}

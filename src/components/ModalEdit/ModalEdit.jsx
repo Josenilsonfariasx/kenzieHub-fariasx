@@ -1,19 +1,19 @@
-import { MdClose } from "react-icons/md";
+import { MdClose } from "react-icons/md"
 
-import style from "./style.module.scss";
-import { Input } from "../Input/Input";
-import { useForm } from "react-hook-form";
-import { useTechContext } from "../../providers/TechContext";
+import style from "./style.module.scss"
+import { Input } from "../Input/Input"
+import { useForm } from "react-hook-form"
+import { useTechContext } from "../../providers/TechContext"
 
 export const ModalEdit = ({ visible, EditModaValue }) => {
-    const { register, handleSubmit } = useForm();
-    const { editTech } = useTechContext();
+    const { register, handleSubmit } = useForm()
+    const { editTech } = useTechContext()
 
     const submit = (status) => {
-        const id = EditModaValue[0].id;
-        editTech(id, status);
+        const id = EditModaValue[0].id
+        editTech(id, status)
         visible(false)
-    };
+    }
     return (
         <div role="dialog" className={style.modalOverlay}>
             <div className={style.modal}>
@@ -44,5 +44,5 @@ export const ModalEdit = ({ visible, EditModaValue }) => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

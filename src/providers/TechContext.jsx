@@ -1,17 +1,17 @@
-import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Api } from "../services/api";
-import { useUserContext } from "./UserContext";
-import { toast } from "react-toastify";
+import { createContext, useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Api } from "../services/api"
+import { useUserContext } from "./UserContext"
+import { toast } from "react-toastify"
 
-export const TechContext = createContext({});
+export const TechContext = createContext({})
 
 export const TechProvider = ({ children }) => {
-    const { tech, setTech } = useUserContext();
-    let newTech = {};
+    const { tech, setTech } = useUserContext()
+    let newTech = {}
 
-    const navi = useNavigate();
-    const token = localStorage.getItem("@KU-User");
+    const navi = useNavigate()
+    const token = localStorage.getItem("@KU-User")
     const createTech = async (form) => {
         if (token) {
             try {
@@ -19,30 +19,29 @@ export const TechProvider = ({ children }) => {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
-                });
-                const { title, status, id, created_at, updated_at } = data;
+                })
+                const { title, status, id, created_at, updated_at } = data
                 newTech = {
                     id,
                     title,
                     status,
                     created_at,
                     updated_at,
-                };
-                const add = { ...newTech };
-                setTech([...tech, add]);
+                }
+                const add = { ...newTech }
+                setTech([...tech, add])
                 toast.success("Adicionado com sucesso")
             } catch (error) {
             }
         } else {
-            toast.warning("Voce precisa estar logado para criar");
-            navi("/");
+            toast.warning("Voce precisa estar logado para criar")
+            navi("/")
         }
-    };
+    }
 
     const removeTech = async (idTech) =>{
         if(token) {
             try {
-                console.log(idTech)
                 const {data} = await Api.delete(`/users/techs/${idTech}`, {
                     headers:{
                         Authorization : `Bearer ${token}`
@@ -62,7 +61,6 @@ export const TechProvider = ({ children }) => {
     }
 
     const editTech = async (idTech, status) =>{
-        console.log(status)
         if(token){
             try {
                 const {data} = await Api.put(`/users/techs/${idTech}`,status, {
@@ -75,7 +73,6 @@ export const TechProvider = ({ children }) => {
                         techs.id == idTech
                         )
                     })
-                console.log(editStateTech)
                 const removeStateTech = tech.filter((techs) =>{
                     return (
                         techs.id != idTech
@@ -86,7 +83,6 @@ export const TechProvider = ({ children }) => {
                 const techEdit = editStateTech
                 setTech([...removeStateTech, ...techEdit])
             } catch (error) {
-                console.log(error)
             }
         }
     }
@@ -94,7 +90,7 @@ export const TechProvider = ({ children }) => {
         <TechContext.Provider value={{ createTech, removeTech, editTech}}>
             {children}
         </TechContext.Provider>
-    );
-};
+    )
+}
 
-export const useTechContext = () => useContext(TechContext);
+export const useTechContext = () => useContext(TechContext)

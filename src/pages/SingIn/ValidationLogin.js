@@ -1,5 +1,5 @@
-import path from "path";
-import { z } from "zod";
+import path from "path"
+import { z } from "zod"
 
 export const ValidationLogin = z.object({
     email: z
@@ -10,4 +10,4 @@ export const ValidationLogin = z.object({
         .string()
         .nonempty("É obrigatorio")
         .min(8, "E necessario pelo menos 8 digitos")
-});
+})

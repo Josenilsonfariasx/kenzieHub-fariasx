@@ -1,35 +1,35 @@
-import { Link, useNavigate } from "react-router-dom";
-import { Header } from "../../components/Header/Header";
-import { Input } from "../../components/Input/Input";
-import style from "./style.module.scss";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ValidationLogin } from "./ValidationLogin";
-import { useState } from "react";
-import { useUserContext } from "../../providers/UserContext";
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom"
+import { Header } from "../../components/Header/Header"
+import { Input } from "../../components/Input/Input"
+import style from "./style.module.scss"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { ValidationLogin } from "./ValidationLogin"
+import { useState } from "react"
+import { useUserContext } from "../../providers/UserContext"
+import { toast } from "react-toastify"
 export const SingIn = () => {
-    const [loading, setLoading] = useState();
-    const { login } = useUserContext();
-    const navi = useNavigate();
+    const [loading, setLoading] = useState()
+    const { login } = useUserContext()
+    const navi = useNavigate()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(ValidationLogin),
-    });
+    })
 
     const submit = (dataForm) => {
         try {
-            setLoading(true);
-            login(dataForm);
+            setLoading(true)
+            login(dataForm)
         } catch (error) {
-            toast.warning(error.message);
+            toast.warning(error.message)
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
-    };
+    }
 
     return (
         <div className={style.div}>
@@ -70,5 +70,5 @@ export const SingIn = () => {
                 </div>
             </main>
         </div>
-    );
-};
+    )
+}

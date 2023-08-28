@@ -24,7 +24,6 @@ export const UserProvider = ({ children }) => {
                     setTech(data.techs)
                     navi("/home");
                 } catch (error) {
-                    console.log(error);
                     toast.warning(error.message);
                     navi("/");
                 }

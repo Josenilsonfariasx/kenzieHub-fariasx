@@ -1,12 +1,12 @@
-import icon_paint from "../../../assets/paint.svg";
-import icon_trash from "../../../assets/trash.svg";
-import { useTechContext } from "../../../providers/TechContext";
-import { useUserContext } from "../../../providers/UserContext";
-import style from "./style.module.scss";
+import icon_paint from "../../../assets/paint.svg"
+import icon_trash from "../../../assets/trash.svg"
+import { useTechContext } from "../../../providers/TechContext"
+import { useUserContext } from "../../../providers/UserContext"
+import style from "./style.module.scss"
 
 export const TechCard = ({title, status, id, visible, setVisible, EditModaValue}) => {
     const {removeTech, editTech} = useTechContext()
-    const { tech, setTech } = useUserContext();
+    const { tech, setTech } = useUserContext()
     return (
         <>
             <li className={style.li}>
@@ -30,5 +30,5 @@ export const TechCard = ({title, status, id, visible, setVisible, EditModaValue}
                 </div>
             </li>
         </>
-    );
-};
+    )
+}

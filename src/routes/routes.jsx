@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom";
-import { SingIn } from "../pages/SingIn/SingIn";
-import { Register } from "../pages/Register/Register";
-import { Dashboard } from "../pages/Dashborad/Dashborad";
-import { UserProvider } from "../providers/UserContext";
-import { ProtectedRoutes } from "../ProtectedRoutes/ProtectedRoutes";
-import { TechProvider } from "../providers/TechContext";
+import { Route, Routes } from "react-router-dom"
+import { SingIn } from "../pages/SingIn/SingIn"
+import { Register } from "../pages/Register/Register"
+import { Dashboard } from "../pages/Dashborad/Dashborad"
+import { UserProvider } from "../providers/UserContext"
+import { ProtectedRoutes } from "../ProtectedRoutes/ProtectedRoutes"
+import { TechProvider } from "../providers/TechContext"
 
 export const RoutesMain = () => {
     return (
@@ -17,5 +17,5 @@ export const RoutesMain = () => {
                 </Route>
             </Routes>
         </UserProvider>
-    );
-};
+    )
+}

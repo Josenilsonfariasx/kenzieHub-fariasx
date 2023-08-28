@@ -1,39 +1,38 @@
-import { useForm } from "react-hook-form";
-import { Header } from "../../components/Header/Header";
-import { Input } from "../../components/Input/Input";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Validation } from "../../components/ValidationZot";
-import { Api } from "../../services/api";
-import style from "./style.module.scss";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useForm } from "react-hook-form"
+import { Header } from "../../components/Header/Header"
+import { Input } from "../../components/Input/Input"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Validation } from "../../components/ValidationZot"
+import { Api } from "../../services/api"
+import style from "./style.module.scss"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 export const Register = () => {
-    const [loading, setLoading] = useState();
-    const navi = useNavigate();
+    const [loading, setLoading] = useState()
+    const navi = useNavigate()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(Validation),
-    });
+    })
     const registerUser = async (form) => {
         try {
-            setLoading(true);
-            const { data } = await Api.post("/users", form);
-            toast.success("Voce foi redirecionado para o login 🚀");
-            navi("/");
+            setLoading(true)
+            const { data } = await Api.post("/users", form)
+            toast.success("Voce foi redirecionado para o login 🚀")
+            navi("/")
         } catch (error) {
-            console.log(error.message);
-            toast.warning(`${error.message} 😡`);
+            toast.warning(`${error.message} 😡`)
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
-    };
+    }
     const submit = (dataForm) => {
-        const { email, password, name, bio, contact, course_module } = dataForm;
+        const { email, password, name, bio, contact, course_module } = dataForm
         const newForm = {
             email,
             password,
@@ -41,9 +40,9 @@ export const Register = () => {
             bio,
             contact,
             course_module,
-        };
-        registerUser(newForm);
-    };
+        }
+        registerUser(newForm)
+    }
 
     return (
         <div className={style.div}>
@@ -141,5 +140,5 @@ export const Register = () => {
                 </div>
             </main>
         </div>
-    );
-};
+    )
+}
