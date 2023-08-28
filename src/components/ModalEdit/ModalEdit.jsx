@@ -22,7 +22,7 @@ export const ModalEdit = ({ visible, EditModaValue }) => {
                         <MdClose />
                     </button>
                 </div>
-                <div>
+                <div className={style.divForm}>
                     <form onSubmit={handleSubmit(submit)}>
                         <Input
                             label="Nome"
@@ -31,6 +31,7 @@ export const ModalEdit = ({ visible, EditModaValue }) => {
                             value={EditModaValue}
                             edit={true}
                         />
+                        <label className="title headline white">Selecionar Status</label>
                         <select {...register("status")}>
                             <option value=""> Altere o status </option>
                             <option value="Iniciante">Iniciante</option>

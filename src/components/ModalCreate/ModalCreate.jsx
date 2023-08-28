@@ -23,7 +23,7 @@ export const ModalCreate = ({ visible }) => {
                         <MdClose />
                     </button>
                 </div>
-                <div>
+                <div className={style.divForm}>
                     <form onSubmit={handleSubmit(submit)}>
                         <Input
                             label="Nome"
@@ -31,6 +31,7 @@ export const ModalCreate = ({ visible }) => {
                             placeholder="Digite o nome da Tech"
                             {...register("title")}
                         />
+                        <label className="title headline white">Selecionar Status</label>
                         <select {...register("status")}>
                             <option value=""> Selecionar</option>
                             <option value="Iniciante">Iniciante</option>

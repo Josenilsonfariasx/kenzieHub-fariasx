@@ -37,9 +37,9 @@ export const TechList = () => {
                                     />
                                 ))
                             : null}
+                    </ul>
                         {visible ? <ModalCreate visible={setVisible} /> : null}
                         {editVisible ? <ModalEdit EditModaValue={EditModaValue} visible={setEdit} />: null}
-                    </ul>
                 </div>
             </section>
         </>
