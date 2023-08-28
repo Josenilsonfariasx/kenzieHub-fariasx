@@ -11,6 +11,7 @@ export const ModalCreate = ({ visible }) => {
 
     const submit = (dataForm) => {
         createTech(dataForm)
+        visible(false)
     }
     return (
         <div role="dialog" className={style.modalOverlay}>
